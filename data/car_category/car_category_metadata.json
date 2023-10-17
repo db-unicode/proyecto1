@@ -1,0 +1,9 @@
+{
+  "car_category_id": {
+    "type": "Integer",
+    "primaryKey": true
+  },
+  "car_category_name": {
+    "type": "String"
+  }
+}

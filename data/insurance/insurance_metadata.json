@@ -1,0 +1,10 @@
+{
+  "insurance_name": {
+    "type": "String",
+    "primaryKey": true
+  },
+  "insurance_cost_per_day": {
+    "type": "Integer"
+  }
+}
+

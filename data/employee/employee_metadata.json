@@ -1,0 +1,23 @@
+{
+  "employee_id": {
+    "type": "String",
+    "primaryKey": true
+  },
+  "role_id": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "role",
+      "referenceColumn": "role_id"
+    }
+  },
+  "employee_name": {
+    "type": "String"
+  },
+  "employee_location_id": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "location",
+      "referenceColumn": "location_id"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "location_id": {
+    "type": "String",
+    "primaryKey": true
+  },
+  "location_name": {
+    "type": "String"
+  },
+  "location_address": {
+    "type": "String"
+  },
+  "admin_id": {
+    "type": "String"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "insurance_name": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "insurance",
+      "referenceColumn": "insurance_name"
+    }
+  },
+  "rental_id": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "rental",
+      "referenceColumn": "rental_id"
+    }
+  }
+}

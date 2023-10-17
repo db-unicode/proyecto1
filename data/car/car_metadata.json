@@ -1,0 +1,42 @@
+{
+  "car_id": {
+    "type": "String",
+    "primaryKey": true
+  },
+  "status_id": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "car_status",
+      "referenceColumn": "car_status_id"
+    }
+  },
+  "location_id": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "location",
+      "referenceColumn": "location_id"
+    }
+  },
+  "category_id": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "car_category",
+      "referenceColumn": "car_category_id"
+    }
+  },
+  "brand": {
+    "type": "String"
+  },
+  "model": {
+    "type": "String"
+  },
+  "plate": {
+    "type": "String"
+  },
+  "color": {
+    "type": "String"
+  },
+  "transmission": {
+    "type": "String"
+  }
+}

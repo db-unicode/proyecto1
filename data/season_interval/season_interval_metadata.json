@@ -1,0 +1,16 @@
+{
+  "season_name": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "season",
+      "referenceColumn": "season_name"
+    }
+  },
+  "start_date": {
+    "type": "LocalDate"
+  },
+  "end_date": {
+    "type": "LocalDate"
+  }
+}
+

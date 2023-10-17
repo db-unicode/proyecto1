@@ -1,0 +1,8 @@
+employee_id,role_id,employee_name,employee_location_id
+E0001,2,James Smith,L001
+E0002,2,Emily Johnson,L002
+E0003,2,Samantha Lee,L003
+E0004,1,Robert Brown,L003
+E0005,3,David Wilson,L002
+E0006,1,Michael Garcia,L001
+E0007,1,Jessica Martinez,L002

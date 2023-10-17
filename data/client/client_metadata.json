@@ -1,0 +1,32 @@
+{
+  "client_id": {
+    "type": "String",
+    "primaryKey": true
+  },
+  "driver_license_id": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "driver_license",
+      "referenceColumn": "driver_license_id"
+    }
+  },
+  "client_name": {
+    "type": "String"
+  },
+  "birth_date": {
+    "type": "LocalDate"
+  },
+  "nationality": {
+    "type": "String"
+  },
+  "credit_card_id": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "credit_card",
+      "referenceColumn": "credit_card_id"
+    }
+  },
+  "contact_number": {
+    "type": "String"
+  }
+}

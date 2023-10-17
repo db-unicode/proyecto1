@@ -1,0 +1,18 @@
+{
+  "season_name": {
+    "type": "String",
+    "primaryKey": true
+  },
+  "car_category_id": {
+    "type": "String",
+    "primaryKey": true,
+    "foreignKey": {
+      "referenceTable": "car_category",
+      "referenceColumn": "car_category_id"
+    }
+  },
+  "cost_per_day": {
+    "type": "Integer"
+  }
+}
+

@@ -1,0 +1,9 @@
+season_name,car_category_id,cost_per_day
+alta,0,100
+baja,0,80
+alta,1,150
+baja,1,120
+alta,2,200
+baja,2,160
+alta,3,250
+baja,3,210

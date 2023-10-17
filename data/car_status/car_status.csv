@@ -1,0 +1,7 @@
+car_status_id,car_status_name
+0,available
+1,maintenance
+2,cleaning
+3,reserved
+4,rented
+

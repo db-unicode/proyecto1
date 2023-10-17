@@ -1,0 +1,52 @@
+{
+  "location_id": {
+    "type": "String",
+    "primaryKey": true,
+    "foreignKey": {
+      "referenceTable": "location",
+      "referenceColumn": "location_id"
+    }
+  },
+  "monday_open_time": {
+    "type": "LocalTime"
+  },
+  "monday_close_time": {
+    "type": "LocalTime"
+  },
+  "tuesday_open_time": {
+    "type": "LocalTime"
+  },
+  "tuesday_close_time": {
+    "type": "LocalTime"
+  },
+  "wednesday_open_time": {
+    "type": "LocalTime"
+  },
+  "wednesday_close_time": {
+    "type": "LocalTime"
+  },
+  "thursday_open_time": {
+    "type": "LocalTime"
+  },
+  "thursday_close_time": {
+    "type": "LocalTime"
+  },
+  "friday_open_time": {
+    "type": "LocalTime"
+  },
+  "friday_close_time": {
+    "type": "LocalTime"
+  },
+  "saturday_open_time": {
+    "type": "LocalTime"
+  },
+  "saturday_close_time": {
+    "type": "LocalTime"
+  },
+  "sunday_open_time": {
+    "type": "LocalTime"
+  },
+  "sunday_close_time": {
+    "type": "LocalTime"
+  }
+}

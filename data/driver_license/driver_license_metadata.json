@@ -1,0 +1,15 @@
+{
+  "driver_license_id": {
+    "type": "String",
+    "primaryKey": true
+  },
+  "driver_name": {
+    "type": "String"
+  },
+  "expedition_country": {
+    "type": "String"
+  },
+  "expiration_date": {
+    "type": "LocalDate"
+  }
+}

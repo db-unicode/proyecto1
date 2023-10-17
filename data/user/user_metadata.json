@@ -1,0 +1,16 @@
+{
+  "user_id": {
+    "type": "String",
+    "primaryKey": true
+  },
+  "user_type": {
+    "type": "String"
+  },
+  "password": {
+    "type": "String"
+  },
+  "role_name": {
+    "type": "String"
+  }
+}
+

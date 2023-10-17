@@ -1,0 +1,9 @@
+{
+  "rental_status_id": {
+    "type": "String",
+    "primaryKey": true
+  },
+  "rental_status_name": {
+    "type": "String"
+  }
+}

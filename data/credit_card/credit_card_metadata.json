@@ -1,0 +1,15 @@
+{
+  "credit_card_id": {
+    "type": "String",
+    "primaryKey": true
+  },
+  "cvc": {
+    "type": "String"
+  },
+  "expiration_date": {
+    "type": "LocalDate"
+  },
+  "is_blocked": {
+    "type": "Boolean"
+  }
+}

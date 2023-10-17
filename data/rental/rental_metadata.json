@@ -1,0 +1,78 @@
+{
+  "rental_id": {
+    "type": "String",
+    "primaryKey": true
+  },
+  "season_name": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "season",
+      "referenceColumn": "season_name"
+    }
+  },
+  "desired_car_category_id": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "car_category",
+      "referenceColumn": "car_category_id"
+    }
+  },
+  "car_id": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "car",
+      "referenceColumn": "car_id"
+    }
+  },
+  "client_id": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "client",
+      "referenceColumn": "client_id"
+    }
+  },
+  "rental_status_id": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "rental_status",
+      "referenceColumn": "rental_status_id"
+    }
+  },
+  "delivery_location_id": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "location",
+      "referenceColumn": "location_id"
+    }
+  },
+  "delivery_start_time": {
+    "type": "LocalTime"
+  },
+  "delivery_end_time": {
+    "type": "LocalTime"
+  },
+  "delivery_date": {
+    "type": "LocalDate"
+  },
+  "return_start_time": {
+    "type": "LocalTime"
+  },
+  "return_end_time": {
+    "type": "LocalTime"
+  },
+  "return_date": {
+    "type": "LocalDate"
+  },
+  "calculated_cost": {
+    "type": "Integer"
+  },
+  "cost_per_day": {
+    "type": "Integer"
+  },
+  "percentage_paid": {
+    "type": "Integer"
+  },
+  "total_days": {
+    "type": "Integer"
+  }
+}

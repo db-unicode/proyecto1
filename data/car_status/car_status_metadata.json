@@ -1,0 +1,9 @@
+{
+  "car_status_id": {
+    "type": "String",
+    "primaryKey": true
+  },
+  "car_status_name": {
+    "type": "String"
+  }
+}

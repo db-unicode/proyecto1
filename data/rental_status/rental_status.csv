@@ -1,0 +1,4 @@
+rental_status_id,rental_status_name
+0,reserved
+1,rented
+2,returned

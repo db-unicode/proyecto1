@@ -1,0 +1,17 @@
+{
+  "rental_id": {
+    "type": "Integer",
+    "primaryKey": true,
+    "foreignKey": {
+      "referenceTable": "rental",
+      "referenceColumn": "rental_id"
+    }
+  },
+  "driver_license_id": {
+    "type": "Integer",
+    "foreignKey": {
+      "referenceTable": "driver_license",
+      "referenceColumn": "driver_license_id"
+    }
+  }
+}

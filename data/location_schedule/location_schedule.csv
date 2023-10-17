@@ -1,0 +1,4 @@
+location_id,monday_open_time,monday_close_time,tuesday_open_time,tuesday_close_time,wednesday_open_time,wednesday_close_time,thursday_open_time,thursday_close_time,friday_open_time,friday_close_time,saturday_open_time,saturday_close_time,sunday_open_time,sunday_close_time
+L001,08:00,18:00,08:00,18:00,08:00,18:00,08:00,18:00,08:00,18:00,09:00,17:00,10:00,16:00
+L002,09:00,19:00,09:00,19:00,09:00,19:00,09:00,19:00,09:00,19:00,10:00,18:00,11:00,17:00
+L003,08:30,18:30,08:30,18:30,08:30,18:30,08:30,18:30,08:30,18:30,09:30,17:30,10:30,16:30
