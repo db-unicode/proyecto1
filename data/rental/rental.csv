@@ -1,2 +1,2 @@
 rental_id,season_name,desired_car_category_id,car_id,client_id,rental_status_id,delivery_location_id,delivery_start_time,delivery_end_time,delivery_date,return_start_time,return_end_time,return_date,calculated_cost,cost_per_day,percentage_paid,total_days
-2002909858,baja,2,C0004,1001,0,L001,12:00,13:00,2023_11_01,14:00,15:00,2023_11_02,320,160,0,2
+2002909858,baja,2,C0004,1001,2,L001,12:00,13:00,2023_11_01,14:00,15:00,2023_11_02,365,160,0,2

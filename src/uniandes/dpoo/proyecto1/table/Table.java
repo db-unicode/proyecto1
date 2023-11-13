@@ -1,10 +1,7 @@
 package uniandes.dpoo.proyecto1.table;
 
 import joinery.DataFrame;
-import prov.CSVManager;
-import prov.TableMetadata;
-import prov.TablePathResolver;
-import prov.TablesManager;
+import uniandes.dpoo.proyecto1.dataloaders.CSVManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,8 +11,6 @@ import java.time.LocalTime;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.stream.Collectors;
-
-import org.apache.commons.collections4.sequence.DeleteCommand;
 
 public class Table {
 
@@ -50,6 +45,7 @@ public class Table {
 		result = result.select(row -> row.get(0).equals(idString));
 		deleteRow(result);
 	}
+
 	public Table addRow(String... values) {
 		if (values.length != totalColumns) {
 			throw new IllegalArgumentException(
@@ -71,29 +67,30 @@ public class Table {
 		this.castAllColumns();
 		return this;
 	}
-	
+
 	private void checkUniquePrimaryKeyCombination(String[] values) {
-	    DataFrame<String> df_string = getStringedDataFrame();
-	    for (List<String> row : df_string) {
-	        if (hasSamePrimaryKeysCombination(row, values)) {
-	            throw new IllegalArgumentException("Values " + Arrays.toString(values) + " do not meet the condition of unique primary keys of the table " + this.tableName);
-	        }
-	    }
+		DataFrame<String> df_string = getStringedDataFrame();
+		for (List<String> row : df_string) {
+			if (hasSamePrimaryKeysCombination(row, values)) {
+				throw new IllegalArgumentException("Values " + Arrays.toString(values)
+						+ " do not meet the condition of unique primary keys of the table " + this.tableName);
+			}
+		}
 	}
 
 	public DataFrame<String> getStringedDataFrame() {
-	    return this.df.apply(v -> v == null ? null : v.toString());
+		return this.df.apply(v -> v == null ? null : v.toString());
 	}
 
 	private boolean hasSamePrimaryKeysCombination(List<String> row, String[] values) {
-	    for (int primaryKeyIndex : this.primaryKeysIndex) {
-	        String rowValue = row.get(primaryKeyIndex);
-	        String valueToCheck = values[primaryKeyIndex];
-	        if (!rowValue.equals(valueToCheck)) {
-	            return false;
-	        }
-	    }
-	    return true;
+		for (int primaryKeyIndex : this.primaryKeysIndex) {
+			String rowValue = row.get(primaryKeyIndex);
+			String valueToCheck = values[primaryKeyIndex];
+			if (!rowValue.equals(valueToCheck)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private void castAllColumns() {
@@ -159,45 +156,47 @@ public class Table {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public DataFrame<String> searchEqualValues(String... values) {
-        if (values.length % 2 != 0) {
-            throw new IllegalArgumentException("Odd number of arguments. Column-value pairs are expected.");
-        }
-        DataFrame<String> resultDf = this.getStringedDataFrame();
-        for (int i = 0; i < values.length; i += 2) {
-            String column = values[i];
-            String value = values[i + 1];
-            checkColumnExists(column);
-            int columnIndex = this.getColumnIndex(column);;
-            resultDf = resultDf.select(row -> row.get(columnIndex).equals(value));
-        }
-        if (resultDf.isEmpty()) {
-        	String msg = "The query " + values.toString() + " in the table '" + this.tableName + "' is empty";
-        	throw new IllegalArgumentException(msg);
-        }
-        return resultDf;
+		if (values.length % 2 != 0) {
+			throw new IllegalArgumentException("Odd number of arguments. Column-value pairs are expected.");
+		}
+		DataFrame<String> resultDf = this.getStringedDataFrame();
+		for (int i = 0; i < values.length; i += 2) {
+			String column = values[i];
+			String value = values[i + 1];
+			checkColumnExists(column);
+			int columnIndex = this.getColumnIndex(column);
+			;
+			resultDf = resultDf.select(row -> row.get(columnIndex).equals(value));
+		}
+		if (resultDf.isEmpty()) {
+			String msg = "The query " + values.toString() + " in the table '" + this.tableName + "' is empty";
+			throw new IllegalArgumentException(msg);
+		}
+		return resultDf;
 	}
-	
+
 	public void deleteRow(DataFrame<String> onlyOneRowDataFrame) {
 		int index = this.getRowIndex(onlyOneRowDataFrame);
 		df.drop(index);
 		this.saveCSVDataFrame();
 		this.castAllColumns();
 	}
-	
-	public void changeRowColumnValue(DataFrame<String> onlyOneRowDataFrame, String columnName, String newValue) {
+
+	public void changeRowColumnValue(DataFrame<String> onlyOneRowDataFrame, String columnName, String newValue) { 
+		//se puede usar la misma idea para cambiar varias columnas al tiempo, igual que searchEqualValues
 		int index = this.getRowIndex(onlyOneRowDataFrame);
 		int columnId = this.getColumnIndex(columnName);
 		df.set(index, columnId, newValue);
 		this.saveCSVDataFrame();
 		this.castAllColumns();
 	}
-	
+
 	public int getColumnIndex(String columnName) {
 		return columns.indexOf(columnName);
 	}
-	
+
 	public DataFrame<Object> getDataFrame() {
 		return df;
 	}
@@ -217,7 +216,16 @@ public class Table {
 	public TableMetadata getMetadata() {
 		return metadata;
 	}
+
 	private int getRowIndex(DataFrame<String> onlyOneRowDataFrame) {
 		return (int) onlyOneRowDataFrame.index().iterator().next();
+	}
+	
+	public List<String> getAllColumn(String columnName) {
+	    checkColumnExists(columnName); 
+	    List<Object> columnData = this.df.col(columnName); 
+	    return columnData.stream()
+	                     .map(Object::toString) 
+	                     .collect(Collectors.toList()); 
 	}
 }

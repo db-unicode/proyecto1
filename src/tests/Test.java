@@ -1,25 +1,17 @@
 package tests;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import joinery.DataFrame;
-import prov.CSVManager;
 import uniandes.dpoo.proyecto1.table.Table;
-import prov.JSONManager;
-import prov.Rental;
-import prov.TableMetadata;
-import prov.TablesManager;
+import uniandes.dpoo.proyecto1.tablesmanager.TablesManager;
 
 public class Test {
 	
 	public static void main(String[] args) {
 		try {
 			TablesManager.loadTables();
-//			System.out.println(TablesManager.getTable("client").getDataFrame());
+			System.out.println(TablesManager.getTable("client").getDataFrame());
 			
 			System.out.println(TablesManager.getTable("employee").getDataFrame());
+			System.out.println(TablesManager.getTable("employee").getAllColumn("employee_id"));
 			System.out.println(TablesManager.getTable("user").getDataFrame());
 //			System.out.println(TablesManager.getTable("rental").getColumns());
 //			System.out.println(TablesManager.getTable("season").getDataFrame());

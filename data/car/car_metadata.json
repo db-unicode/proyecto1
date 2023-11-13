@@ -31,7 +31,8 @@
     "type": "String"
   },
   "plate": {
-    "type": "String"
+    "type": "String",
+    "primaryKey": true
   },
   "color": {
     "type": "String"

@@ -1,6 +1,6 @@
 {
   "rental_id": {
-    "type": "Integer",
+    "type": "String",
     "primaryKey": true,
     "foreignKey": {
       "referenceTable": "rental",
@@ -8,7 +8,7 @@
     }
   },
   "driver_license_id": {
-    "type": "Integer",
+    "type": "String",
     "foreignKey": {
       "referenceTable": "driver_license",
       "referenceColumn": "driver_license_id"
