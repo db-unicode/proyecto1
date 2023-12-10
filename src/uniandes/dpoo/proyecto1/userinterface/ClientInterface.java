@@ -16,6 +16,7 @@ public class ClientInterface extends MainMenuInterface {
     public ClientInterface() {
         super();
         addReserveCarOption();
+        addCheckAvailabilityOption();
     }
 
     private void addReserveCarOption() {
@@ -27,6 +28,17 @@ public class ClientInterface extends MainMenuInterface {
             }
         };
         this.addOption("Reserve a Car", actionListener);
+    }
+    
+    private void addCheckAvailabilityOption() {
+        ActionListener actionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JDialog carReservationWindow = new ValidateAvailabilityWindow(ClientInterface.this);
+                carReservationWindow.setVisible(true);
+            }
+        };
+        this.addOption("Check Availability", actionListener);
     }
 }
 

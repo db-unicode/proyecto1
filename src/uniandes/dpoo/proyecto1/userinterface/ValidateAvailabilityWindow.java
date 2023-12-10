@@ -9,22 +9,19 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class NewClientWindow extends JDialog{
-	/**
-	 * 
-	 */
+public class ValidateAvailabilityWindow extends JDialog {
+
 	private static final long serialVersionUID = 1L;
 	private JPanel configPanel;
 	private JPanel titleContainer;
 	private JLabel titleLabel;
-	private Frame owner;
-	
+
 	public static void main(String[] args) {
-		new DeliverCarReservationWindow(null);
+		new ValidateAvailabilityWindow(null);
 	}
-	public NewClientWindow(Frame owner) {
-        super(owner, "New Client", true);
-        this.owner = owner;
+	
+	public ValidateAvailabilityWindow(Frame owner) {
+        super(owner, "Validate Availability", true);
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setResizable(false);
@@ -38,7 +35,7 @@ public class NewClientWindow extends JDialog{
 	private void buildTitleContainer() {
 		titleContainer = new JPanel();
 		titleContainer.setPreferredSize(new Dimension(1024, 100));
-		titleLabel = new JLabel("New Client");
+		titleLabel = new JLabel("Validate Availability");
 		Font titleFont = new Font("Arial", Font.ITALIC, 46);
 		titleLabel.setFont(titleFont);
 		titleContainer.add(titleLabel, BorderLayout.PAGE_START);
@@ -49,7 +46,7 @@ public class NewClientWindow extends JDialog{
 		configPanel = new JPanel();
 		configPanel.setPreferredSize(new Dimension(1024, 300));
 
-		configPanel.add(new NewClientWindowQuestions(owner, this));
+		configPanel.add(new ValidateAvailabilityQuestions());
 		
 		this.add(configPanel, BorderLayout.CENTER);
 	}

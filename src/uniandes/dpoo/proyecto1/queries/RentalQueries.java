@@ -1,10 +1,15 @@
 package uniandes.dpoo.proyecto1.queries;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import joinery.DataFrame;
 import uniandes.dpoo.proyecto1.table.Table;
 import uniandes.dpoo.proyecto1.tablesmanager.TablesManager;
+import uniandes.dpoo.proyecto1.timetools.TimeRange;
 
 public class RentalQueries {
 	private static final Table rentalTable = TablesManager.getTable("rental");
@@ -58,4 +63,33 @@ public class RentalQueries {
     	DataFrame<String> result = rentalTable.searchEqualValues(query);
     	rentalTable.changeRowColumnValue(result, "rental_status_id", statusId);
     }
+    
+    public static HashMap<String, ArrayList<TimeRange<LocalDate>>> getCarMapOfRentalsRanges(List<String> carIds) {
+		HashMap<String, ArrayList<TimeRange<LocalDate>>> carIdCarRentalRanges = new HashMap<String, ArrayList<TimeRange<LocalDate>>>();
+		for(String carId: carIds) {
+			carIdCarRentalRanges.put(carId, getAllCarRentalRanges(carId));
+		}
+		return carIdCarRentalRanges;
+	}
+    
+    public static ArrayList<TimeRange<LocalDate>> getAllCarRentalRanges(String carId) {
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    	String[] query = {"car_id", carId };
+		int deliveryDateIndex = rentalTable.getColumnIndex("delivery_date");
+		int returnDateIndex = rentalTable.getColumnIndex("return_date");
+		try {
+			DataFrame<String> result = rentalTable.searchEqualValues(query);
+			ArrayList<TimeRange<LocalDate>> carRentalRanges = new ArrayList<TimeRange<LocalDate>>();
+			for(List<String> row : result) {
+				LocalDate deliveryDate = LocalDate.parse(row.get(deliveryDateIndex), formatter);
+				LocalDate returnDate = LocalDate.parse(row.get(returnDateIndex), formatter);
+				TimeRange<LocalDate> rentalRange = new TimeRange<LocalDate>(deliveryDate, returnDate);
+				carRentalRanges.add(rentalRange);
+			}
+			return carRentalRanges;
+		} catch (Exception e) {
+			return null;
+		}
+		
+	}
 }

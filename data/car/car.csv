@@ -1,7 +1,7 @@
-car_id,status_id,location_id,category_id,brand,model,plate,color,transmission
-C0001,2,L001,0,Toyota,Corolla,XYZ123,Red,Manual
-C0002,0,L002,1,Honda,Civic,ABC456,Blue,Automatic
-C0003,0,L003,2,BMW,320i,DEF789,Black,Automatic
-C0004,0,L001,3,Audi,A4,GHI012,White,Manual
-C0005,0,L002,0,Ford,Focus,JKL345,Gray,Automatic
-C0006,0,L003,1,Mercedes,C_Class,MNO678,Silver,Manual
+car_id,status_id,location_id,category_id,brand,model,plate,color,type
+C0001,2,L001,0,Toyota,Corolla,XYZ123,Red,car
+C0002,0,L002,1,Honda,Civic,ABC456,Blue,car
+C0003,0,L003,2,BMW,320i,DEF789,Black,car
+C0004,0,L001,3,Audi,A4,GHI012,White,car
+C0005,0,L002,0,Ford,Focus,JKL345,Gray,car
+C0006,0,L003,1,Mercedes,C_Class,MNO678,Silver,car

@@ -1,5 +1,15 @@
 package tests;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.poi.hslf.util.LocaleDateFormat;
+
+import uniandes.dpoo.proyecto1.availabilitylogic.AvailabilityLogic;
+import uniandes.dpoo.proyecto1.queries.CarQueries;
+import uniandes.dpoo.proyecto1.queries.RentalQueries;
+import uniandes.dpoo.proyecto1.queries.VehicleTypeQueries;
 import uniandes.dpoo.proyecto1.table.Table;
 import uniandes.dpoo.proyecto1.tablesmanager.TablesManager;
 
@@ -9,7 +19,7 @@ public class Test {
 		try {
 			TablesManager.loadTables();
 			System.out.println(TablesManager.getTable("client").getDataFrame());
-			
+			System.out.println(TablesManager.getTable("vehicle_type").getDataFrame());
 			System.out.println(TablesManager.getTable("employee").getDataFrame());
 			System.out.println(TablesManager.getTable("employee").getAllColumn("employee_id"));
 			System.out.println(TablesManager.getTable("user").getDataFrame());
@@ -50,6 +60,13 @@ public class Test {
 			System.out.println(rentalDriversTable.getColumns());
 			System.out.println(TablesManager.getTable("season_interval").getDataFrame());
 
+			List<String> carIds = new ArrayList<String>();
+			carIds.add("C0004");
+			carIds.add("C0005");
+			System.out.println(RentalQueries.getCarMapOfRentalsRanges(carIds));
+			LocalDate prueba = LocalDate.parse("2023-11-03");
+			System.out.println(AvailabilityLogic.countAvailableCarsInLocation(prueba, "Main Office"));
+			// 
 //			Rental aRental = new Rental("1001", "deluxe", "Harbor Outlet");
 //			System.out.println(mockTable.addRow("7258780612","pedro","tata@","2023-01-14","true","13").getTable());;
 //			System.out.println(mockTable.getTable().col("client").get(10).getClass());
@@ -70,5 +87,7 @@ public class Test {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(VehicleTypeQueries.getVehicleInsuranceAdditional(CarQueries.getVehicleTypeId("C0004")));
+		System.out.println();
 	}
 }

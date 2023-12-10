@@ -26,6 +26,14 @@ public class CarQueries {
     	return carLocationId;
     }
     
+    public static String getVehicleTypeId(String carId) {
+    	int typeIndex =  carTable.getColumnIndex("type");
+    	String[] query = {"car_id", carId};
+    	DataFrame<String> result = carTable.searchEqualValues(query);
+    	String vehicleTypeName = result.get(0, typeIndex);
+    	return vehicleTypeName;
+    }
+    
     public static String getCarInfo(String carId) {
     	String[] query = {"car_id", carId};
     	DataFrame<String> result = carTable.searchEqualValues(query);

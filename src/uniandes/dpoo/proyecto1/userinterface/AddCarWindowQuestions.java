@@ -27,6 +27,7 @@ import uniandes.dpoo.proyecto1.queries.CarCategoryQueries;
 import uniandes.dpoo.proyecto1.queries.CarQueries;
 import uniandes.dpoo.proyecto1.queries.CarStatusQueries;
 import uniandes.dpoo.proyecto1.queries.LocationQueries;
+import uniandes.dpoo.proyecto1.queries.VehicleTypeQueries;
 
 
 
@@ -101,10 +102,11 @@ public class AddCarWindowQuestions extends JPanel {
 		}
 		LabelInputPanel carCategoryPanel = new LabelInputPanel(carCategoryLabel, carCategoryInput);
 		
-		JLabel transmissionLabel = new JLabel("Transmission: ");
+		JLabel transmissionLabel = new JLabel("Vehicle Type: ");
 		transmissionInput = new JComboBox<String>();
-		transmissionInput.addItem("Manual");
-		transmissionInput.addItem("Automatic");
+		for(String vehicleType: VehicleTypeQueries.getAllVehicleTypeNames()) {
+			transmissionInput.addItem(vehicleType);
+		}
 		LabelInputPanel transmissionPanel = new LabelInputPanel(transmissionLabel, transmissionInput);
 		
 

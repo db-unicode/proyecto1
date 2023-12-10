@@ -19,6 +19,7 @@ import uniandes.dpoo.proyecto1.queries.RentalDriversQueries;
 import uniandes.dpoo.proyecto1.queries.RentalInsuranceQueries;
 import uniandes.dpoo.proyecto1.queries.RentalStatusQueries;
 import uniandes.dpoo.proyecto1.queries.SeasonQueries;
+import uniandes.dpoo.proyecto1.queries.VehicleTypeQueries;
 import uniandes.dpoo.proyecto1.table.Table;
 import uniandes.dpoo.proyecto1.tablesmanager.TablesManager;
 import uniandes.dpoo.proyecto1.timetools.TimeRange;
@@ -36,10 +37,10 @@ public class Rental {
 	private String deliveryLocationId;
 	private String deliveryLocation;
 	private String carId;
-	private boolean changedDesiredLocation = false;
+	private boolean changedDesiredLocation = false; 
 	private String rentalStatusId = RentalStatusQueries.getRentalStatusId("reserved");
 	private LocalDate deliveryDate;
-	private TimeRange<LocalTime> deliveryRange;
+	private TimeRange<LocalTime> deliveryRange; 
 	private LocalDate returnDate;
 	private TimeRange<LocalTime> returnRange;
 	private String seasonName;
@@ -108,7 +109,7 @@ public class Rental {
 			String msg = "Invalid Time Range for " + dayName + " for location " + this.deliveryLocation;
 			throw new Exception(msg);
 		}
-		this.deliveryDate = deliveryDay;
+		this.deliveryDate = deliveryDay; 
 		this.deliveryRange = deliveryRange;
 		this.seasonName = SeasonQueries.getSeason(deliveryDay);
 		this.costPerDay += SeasonQueries.getSeasonCostPerDay(String.valueOf(desiredCarCategoryId), seasonName);
@@ -138,8 +139,11 @@ public class Rental {
 
 	public void addInsurance(String insuranceName) throws Exception {
 		int insuranceCostPerDay = InsuranceQueries.getInsuranceCostPerDay(insuranceName);
+		String vehicleTypeName = CarQueries.getVehicleTypeId(carId);
+		float floatRealInsuranceCostPerDay = insuranceCostPerDay * VehicleTypeQueries.getVehicleInsuranceAdditional(vehicleTypeName);
+		int realInsuranceCostPerDay = (int) Math.ceil(floatRealInsuranceCostPerDay);
 		this.insuranceNames.add(insuranceName);
-		this.costPerDay += insuranceCostPerDay;
+		this.costPerDay += realInsuranceCostPerDay;
 	}
 
 	public void addInsuranceList(List<String> insuranceNameList) throws Exception {

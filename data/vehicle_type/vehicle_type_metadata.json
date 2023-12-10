@@ -1,0 +1,9 @@
+{
+  "type_name": {
+    "type": "String",
+    "primaryKey": true
+  },
+  "insurance_additional": {
+    "type": "Integer"
+  }
+}

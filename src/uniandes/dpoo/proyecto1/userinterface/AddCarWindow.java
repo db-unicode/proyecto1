@@ -20,7 +20,7 @@ public class AddCarWindow extends JDialog {
 	private Frame owner;
 	
 	public static void main(String[] args) {
-		new DeliverCarReservationWindow(null);
+		new AddCarWindow(null);
 	}
 	public AddCarWindow(Frame owner) {
         super(owner, "New Car", true);

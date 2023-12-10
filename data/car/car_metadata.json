@@ -37,7 +37,12 @@
   "color": {
     "type": "String"
   },
-  "transmission": {
-    "type": "String"
+  "type": {
+    "type": "String",
+    "foreignKey": {
+      "referenceTable": "vehicle_type",
+      "referenceColumn": "type_name"
+    }
   }
 }
+

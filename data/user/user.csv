@@ -3,3 +3,4 @@ user_id,user_type,password,role_name
 E0001,employee,321,employee
 E0005,local_admin,111,local_admin
 E0007,general_admin,123,general_admin
+777,employee,666,employee
