@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.lang.String;
 
 import joinery.DataFrame;
+import uniandes.dpoo.proyecto1.facturas.FacturaImpresora;
 import uniandes.dpoo.proyecto1.queries.CarCategoryQueries;
 import uniandes.dpoo.proyecto1.queries.CarQueries;
 import uniandes.dpoo.proyecto1.queries.CarStatusQueries;
@@ -189,6 +190,11 @@ public class Rental {
 		CarQueries.changeCarStatusTo(carId, CarStatusQueries.getCarStatusId("reserved"));
 		Table rentalTable = TablesManager.getTable("rental");
 		rentalTable.addRow(this.rentalToRow());
+        try {
+            FacturaImpresora.generarFacturaPDF(ClientQueries.getClientName(clientId), CarQueries.getCarInfo(carId), deliveryLocation, String.valueOf(calculatedTotalCost));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 	}
 
 	public String[] rentalToRow() {

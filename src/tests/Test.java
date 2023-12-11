@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.poi.hslf.util.LocaleDateFormat;
 
 import uniandes.dpoo.proyecto1.availabilitylogic.AvailabilityLogic;
+import uniandes.dpoo.proyecto1.facturas.FacturaImpresora;
 import uniandes.dpoo.proyecto1.queries.CarQueries;
 import uniandes.dpoo.proyecto1.queries.RentalQueries;
 import uniandes.dpoo.proyecto1.queries.VehicleTypeQueries;
@@ -83,6 +84,7 @@ public class Test {
 //				return id >= 5 && id <= 32; 
 //			});
 //			System.out.println(result);
+			FacturaImpresora.generarFacturaPDF("pedro", "carro", "sede", "precio");
 
 		} catch (Exception e) {
 			e.printStackTrace();
